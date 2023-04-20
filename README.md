@@ -1,5 +1,8 @@
 <br />
 <p align="center">
+  <a href="">
+    <img src="https://abarthel.dev/logo.png" alt="Logo" height="80">
+  </a>
   <h1 align="center">tfexe</h1>
 
   <p align="center"><i>Rust-powered wrapper for seamless execution of tfswitch and Terraform with version control.</i>
