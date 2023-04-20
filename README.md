@@ -1,9 +1,5 @@
 <br />
 <p align="center">
-  <a href="">
-    <img src=".logo.png" alt="Logo" width="90" height="90">
-  </a>
-
   <h1 align="center">tfexe</h1>
 
   <p align="center"><i>Rust-powered wrapper for seamless execution of tfswitch and Terraform with version control.</i>
