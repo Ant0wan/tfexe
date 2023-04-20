@@ -38,7 +38,7 @@ terraform {
 
 # Define your Terraform resources and providers here
 ```
-3. In the command line instead of using the classic Terraform binary, use ***tfexe*** to execute Terraform commands. ***tfexe*** will automatically detect the required version of Terraform specified in your Terraform configuration file (required_version in this case, which is set to "~> 1.2") and download and execute the appropriate Terraform binary for you. For example:
+3. In the command line instead of using the classic Terraform binary, use **tfexe** to execute Terraform commands. **tfexe** will automatically detect the required version of Terraform specified in your Terraform configuration file (required_version in this case, which is set to "~> 1.2") and download and execute the appropriate Terraform binary for you. For example:
 ```shell
 # Run Terraform init with tfexe
 $ tfexe init
@@ -66,7 +66,13 @@ commands will detect it and remind you to do so if necessary.
 
 Note: tfexe will automatically execute tfswitch internally to switch to the specified Terraform version before running the Terraform command, based on the content of the providers.tf file in your Terraform configuration directory.
 
-That's it! You can now use tfexe as a drop-in replacement for the classic Terraform binary to execute Terraform commands, and it will automatically manage the versioning for you based on the required_version specified in your Terraform configuration file and the content of your providers.tf file.
+You can set an alias in your shell, such as Bash or Zsh, to use **tfexe** as a replacement for the **terraform** command. This can be done by adding the line
+```shell
+alias terraform='tfexe'
+```
+to your shell profile file (e.g., *.bashrc*, *.bash_profile*, or *.zshrc*). Once the alias is set, you can use terraform in any script or wrapper call, and it will automatically execute **tfexe** with the proper Terraform version based on your configuration.
+
+That's it! You can now use **tfexe** as a drop-in replacement for the classic Terraform binary to execute Terraform commands, and it will automatically manage the versioning for you based on the required_version specified in your Terraform configuration file and the content of your providers.tf file.
 
 ## License
 
