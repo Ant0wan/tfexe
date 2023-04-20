@@ -85,6 +85,14 @@ alias terraform='tfexe'
 
 That's it! You can now use **tfexe** as a drop-in replacement for the classic Terraform binary to execute Terraform commands, and it will automatically manage the versioning for you based on the required_version specified in your Terraform configuration file and the content of your providers.tf file.
 
+## How it works
+
+```mermaid
+flowchart LR
+    A(tfexe) -->|read .tf| S(tfswitch)
+    S -->|select version| T(terraform)
+```
+
 ## License
 
 This repository is protected by the GPL3 (GNU General Public License v3.0). You can find the full text of the license in the LICENSE file. Please review and comply with the terms and conditions of the GPL3 license before using or contributing to this project.
