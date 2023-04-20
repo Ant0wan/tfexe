@@ -41,7 +41,27 @@ terraform {
 3. In the command line instead of using the classic Terraform binary, use ***tfexe*** to execute Terraform commands. ***tfexe*** will automatically detect the required version of Terraform specified in your Terraform configuration file (required_version in this case, which is set to "~> 1.2") and download and execute the appropriate Terraform binary for you. For example:
 ```shell
 # Run Terraform init with tfexe
-tfexe init
+$ tfexe init
+Reading required version from terraform file
+Reading required version from constraint: ~> 1.2
+Matched version: 1.4.5
+Installing terraform at /home/user/bin
+Switched terraform to version "1.4.5" 
+
+Initializing the backend...
+
+Initializing provider plugins...
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
 ```
 
 Note: tfexe will automatically execute tfswitch internally to switch to the specified Terraform version before running the Terraform command, based on the content of the providers.tf file in your Terraform configuration directory.
