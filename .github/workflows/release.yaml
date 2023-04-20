@@ -1,0 +1,34 @@
+name: Rust Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+
+    - name: Build and Package
+      run: |
+        cargo build --release
+
+    - name: Publish Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          target/release/tfexe
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+
