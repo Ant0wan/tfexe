@@ -10,7 +10,7 @@ on:
     branches:
       - master
 
-permissions: {}
+permissions: write-all
 
 env:
   CARGO_TERM_COLOR: always
