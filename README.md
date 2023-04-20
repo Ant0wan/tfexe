@@ -1,6 +1,16 @@
-# tfexe
+<br />
+<p align="center">
+  <a href="">
+    <img src=".logo.png" alt="Logo" width="90" height="90">
+  </a>
 
-![tfexe](https://your-repo-url.com/assets/tfexe.png)
+  <h1 align="center">T F E X E</h1>
+
+  <p align="center"><i>Rust-powered wrapper for seamless execution of tfswitch and Terraform with version control.</i>
+  </p>
+</p>
+
+---
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
