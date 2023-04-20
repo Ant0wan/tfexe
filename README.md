@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="">
-    <img src="https://abarthel.dev/logo.png" alt="Logo" height="80">
+    <img src=".logo.png" alt="Logo" height="80">
   </a>
   <h1 align="center">tfexe</h1>
 
