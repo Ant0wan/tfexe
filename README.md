@@ -24,7 +24,7 @@ Before installing and using tfexe, you will need to have the following tools ins
 To install tfexe, simply run the `install.sh` script provided in this repository. The script will automatically download and install the necessary dependencies, and set up tfexe on your system.
 
 ```shell
-wget -q -O -  https://raw.githubusercontent.com/Ant0wan/tfexe/master/install.sh | bash
+wget -q -O -  https://raw.githubusercontent.com/Ant0wan/tfexe/master/install.sh | sh
 ```
 
 ## Usage
