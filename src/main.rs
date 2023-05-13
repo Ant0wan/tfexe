@@ -1,29 +1,20 @@
 use std::env;
 use std::io::Result;
-use std::process::exit;
-use std::process::Command;
+use std::process::{exit, Command};
 
 fn main() -> Result<()> {
     let args: Vec<String> = env::args().skip(1).collect();
 
-    let tfswitch = Command::new("tfswitch")
-        .status()
-        .expect("failed to execute tfswitch");
-
-    let tfswitch_exit_value = tfswitch.code().unwrap_or(1);
-    if tfswitch_exit_value != 0 {
-        exit(tfswitch_exit_value);
+    let mut tfswitch = Command::new("tfswitch").spawn()?;
+    let tfswitch_exit_status = tfswitch.wait()?;
+    if !tfswitch_exit_status.success() {
+        exit(tfswitch_exit_status.code().unwrap_or(1));
     }
 
-    let terraform = Command::new("terraform")
-        .args(args)
-        .status()
-        .expect("failed to execute terraform");
-
-    let terraform_exit_value = terraform.code().unwrap_or(1);
-
-    if terraform_exit_value != 0 {
-        exit(terraform_exit_value);
+    let mut terraform = Command::new("terraform").args(args).spawn()?;
+    let terraform_exit_status = terraform.wait()?;
+    if !terraform_exit_status.success() {
+        exit(terraform_exit_status.code().unwrap_or(1));
     }
 
     Ok(())
