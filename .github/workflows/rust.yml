@@ -101,18 +101,20 @@ jobs:
       env: ${{ matrix.env }}
   release:
     needs: [format, lint, test, build]
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         target: [x86_64-unknown-linux-musl, x86_64-apple-darwin, x86_64-pc-windows-gnu, aarch64-unknown-linux-musl, aarch64-apple-darwin]
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
     - uses: actions/checkout@v3
     - uses: actions/download-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
         path: tfexe_${{ matrix.target }}
-    - run: gh release create ${GITHUB_REF#refs/*/} --generate-notes
+    - if: steps.release-note.outcome != 'success'
+      id: release-note
+      run: gh release create ${GITHUB_REF#refs/*/} --generate-notes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: gh release upload ${GITHUB_REF#refs/*/} tfexe_${{ matrix.target }}
