@@ -33,20 +33,20 @@ wget -q -O -  https://raw.githubusercontent.com/Ant0wan/tfexe/master/install.sh 
 2. Create a Terraform configuration file (e.g., main.tf, providers.tf...) with the following content:
 ```hcl
 terraform {
-  required_version = "~> 1.2"
+  required_version = "~> 1.3.0"
 }
 
 # Define your Terraform resources and providers here
 ```
-3. In the command line instead of using the classic Terraform binary, use **tfexe** to execute Terraform commands. **tfexe** will automatically detect the required version of Terraform specified in your Terraform configuration file (required_version in this case, which is set to "~> 1.2") and download and execute the appropriate Terraform binary for you. For example:
+3. In the command line instead of using the classic Terraform binary, use **tfexe** to execute Terraform commands. **tfexe** will automatically detect the required version of Terraform specified in your Terraform configuration file (required_version in this case, which is set to "~> 1.3.0") and download and execute the appropriate Terraform binary for you. For example:
 ```shell
 # Run Terraform init with tfexe
 $ tfexe init
 Reading required version from terraform file
-Reading required version from constraint: ~> 1.2
-Matched version: 1.4.5
-Installing terraform at /home/user/bin
-Switched terraform to version "1.4.5" 
+Reading required version from constraint: ~> 1.3.0
+Matched version: 1.3.9
+Installing terraform at /home/antoine/bin
+Switched terraform to version "1.3.9"
 
 Initializing the backend...
 
@@ -69,15 +69,15 @@ Note: tfexe will automatically execute tfswitch internally to switch to the spec
 If no version of Terraform is specified in tf files, it will display the same prompt as tfswitch:
 ```shell
 $ tfexe
-Use the arrow keys to navigate: ↓ ↑ → ← 
-? Select Terraform version: 
+Use the arrow keys to navigate: ↓ ↑ → ←
+? Select Terraform version:
     1.4.5 *recent
     1.3.9 *recent
     1.2.9 *recent
   ▸ 1.4.4
 ↓   1.4.3
 ```
- 
+
 Note: You can set an alias in your shell, such as Bash or Zsh, to use **tfexe** as a replacement for the **terraform** command. This can be done by adding the line to your shell profile file (e.g., *.bashrc*, *.bash_profile*, or *.zshrc*). Once the alias is set, you can use terraform in any script or wrapper call, and it will automatically execute **tfexe** with the proper Terraform version based on your configuration.
 ```shell
 alias terraform='tfexe'
