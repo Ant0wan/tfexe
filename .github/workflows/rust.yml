@@ -44,7 +44,7 @@ jobs:
             os: ubuntu-latest
             env:
               AR: llvm-ar
-              CC: clang cargo build --verbose --target=${{ matrix.target }}
+              CC: clang
               RUSTFLAGS: '-Clink-self-contained=yes -Clinker=rust-lld'
               # - target: aarch64-apple-darwin
               #   os: macos-latest
