@@ -32,7 +32,7 @@ echo "Downloading tfexe latest version"
 wget --quiet "https://github.com/Ant0wan/tfexe/releases/latest/download/tfexe_${bin}" -O "${download_executable}"
 echo "Downloaded successfully"
 
-if [[ $os == "windows"* ]]; then
+if [ "$bin" = "${arch}-pc-windows-gnu" ]; then
 	dest="${TFEXE_INSTALL_PATH:-/bin}/"
 	echo "Installing tfexe to ${dest} ..."
 	mv "${download_executable}" "$dest"
@@ -46,7 +46,7 @@ if [[ $os == "windows"* ]]; then
 else
 	dest="${TFEXE_INSTALL_PATH:-/usr/local/bin}/"
 	echo "Installing tfexe to ${dest} ..."
-	if [[ -w "$dest" ]]; then SUDO=""; else
+	if [ -w "$dest" ]; then SUDO=""; else
 		SUDO="sudo";
 	fi
 	$SUDO mkdir -p "$dest"
