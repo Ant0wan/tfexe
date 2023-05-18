@@ -112,8 +112,9 @@ jobs:
       with:
         name: tfexe_${{ matrix.target }}
         path: tfexe_${{ matrix.target }}
-    - if: steps.release-note.outcome != 'success'
+    - run: gh release view ${GITHUB_REF#refs/*/}
       id: release-note
+    - if: steps.release-note.outcome != 'success'
       run: gh release create ${GITHUB_REF#refs/*/} --generate-notes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
