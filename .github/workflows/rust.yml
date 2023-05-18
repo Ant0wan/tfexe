@@ -34,16 +34,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - target: x86_64-pc-windows-gnu
-            os: windows-latest
-          - target: x86_64-apple-darwin
-            os: macos-lastest
-          - target: aarch64-apple-darwin
-            os: macos-lastest
           - target: x86_64-unknown-linux-musl
             os: ubuntu-lastest
-          - target: aarch64-unknown-linux-gnu
-            os: ubuntu-latest
+              # - target: x86_64-apple-darwin
+              #   os: macos-lastest
+              # - target: x86_64-pc-windows-gnu
+              #   os: windows-latest
+              # - target: x86_64-apple-darwin
+              #   os: macos-lastest
+              # - target: aarch64-apple-darwin
+              #   os: macos-lastest
+              # - target: aarch64-unknown-linux-gnu
+              #   os: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - run: rustup target add ${{ matrix.target }}
@@ -54,16 +56,16 @@ jobs:
     strategy:
       matrix:
         include:
-          - target: x86_64-pc-windows-gnu
-            os: windows-latest
-          - target: x86_64-apple-darwin
-            os: macos-lastest
-          - target: aarch64-apple-darwin
-            os: macos-lastest
           - target: x86_64-unknown-linux-musl
             os: ubuntu-lastest
-          - target: aarch64-unknown-linux-gnu
-            os: ubuntu-latest
+              # - target: x86_64-apple-darwin
+              #   os: macos-lastest
+              # - target: x86_64-pc-windows-gnu
+              #   os: windows-latest
+              # - target: x86_64-apple-darwin
+              #   os: macos-lastest
+              # - target: aarch64-apple-darwin
+              #   os: macos-lastest
     steps:
     - uses: actions/checkout@v3
     - run: rustup target add ${{ matrix.target }}
