@@ -100,7 +100,6 @@ flowchart LR
 - [x] cross-platform build
 - [ ] install script
 - [ ] documentation update
-- [ ] packaging rpm and deb
 
 ## License
 
