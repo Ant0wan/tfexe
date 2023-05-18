@@ -59,5 +59,3 @@ else
 fi
 echo "Cleaning temporary downloaded files directory ${download_path} ..."
 rm -rf "${download_path}"
-echo "Current tfexe version"
-#"${dest}/tfexe" -v
