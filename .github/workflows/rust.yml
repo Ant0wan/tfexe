@@ -70,11 +70,11 @@ jobs:
     - if: startsWith(github.ref, 'refs/tags/')
       run: cargo build --release --target=${{ matrix.target }}
       env: ${{ matrix.env }}
-    - if: startsWith(github.ref, 'refs/tags/')
+    - if: startsWith(github.ref, 'refs/tags/') && ${{ matrix.target }} != 'x86_64-pc-windows-gnu'
       uses: actions/upload-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
-        path: ${{ matrix.target == 'x86_64-pc-windows-gnu' && 'D:\\a\\tfexe\\tfexe' || matrix.target }}/release/tfexe
+        path: ${{ matrix.target == 'x86_64-pc-windows-gnu' && 'D:\\a\\tfexe\\tfexe' || concat(matrix.target,'/release/tfexe') }}
   test:
     needs: [format, lint, build]
     runs-on: ${{ matrix.os }}
