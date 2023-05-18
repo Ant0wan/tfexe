@@ -36,10 +36,16 @@ jobs:
         include:
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
+            env:
+              CC: gcc
           - target: x86_64-apple-darwin
             os: macos-latest
+            env:
+              CC: clang
           - target: x86_64-pc-windows-gnu
             os: windows-latest
+            env:
+              CC: gcc
           - target: aarch64-unknown-linux-musl
             os: ubuntu-latest
             env:
