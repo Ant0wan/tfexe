@@ -53,6 +53,7 @@ jobs:
     - run: rustup target add ${{ matrix.target }}
     - if: "!startsWith(github.ref, 'refs/tags/')"
       run: cargo build --verbose --target=${{ matrix.target }}
+      env: ${{ matrix.env }}
     - if: startsWith(github.ref, 'refs/tags/')
       run: cargo build --release --target=${{ matrix.target }}
     - if: startsWith(github.ref, 'refs/tags/')
