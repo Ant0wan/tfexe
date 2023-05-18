@@ -74,7 +74,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
-        path: ${{ matrix.target == 'x86_64-pc-windows-gnu' && 'D:\\a\\tfexe\\tfexe' || format('{0}{1}', matrix.target, '/release/tfexe') }}
+        path: ${{ matrix.target == 'x86_64-pc-windows-gnu' && 'x86_64-pc-windows-gnu\\release\\tfexe.exe') || format('{0}{1}', matrix.target, '/release/tfexe') }}
   test:
     needs: [format, lint, build]
     runs-on: ${{ matrix.os }}
@@ -118,12 +118,12 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
-        target: [x86_64-unknown-linux-musl, x86_64-apple-darwin, x86_64-pc-windows-gnu, aarch64-unknown-linux-musl, aarch64-apple-darwin]
+        target: [x86_64-unknown-linux-musl, x86_64-apple-darwin, aarch64-unknown-linux-musl, aarch64-apple-darwin, x86_64-pc-windows-gnu]
     steps:
     - uses: actions/checkout@v3
     - uses: actions/download-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
-    - run: mv tfexe tfexe_${{ matrix.target }}
+    - run: mv ${{ matrix.target == 'x86_64-pc-windows-gnu' && 'tfexe.exe' || 'tfexe' }} tfexe_${{ matrix.target }}
     - run: gh release upload ${GITHUB_REF#refs/*/} tfexe_${{ matrix.target }}
 
