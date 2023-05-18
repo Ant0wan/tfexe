@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -o errexit
 get_machine_arch () {
 	machine_arch=""
