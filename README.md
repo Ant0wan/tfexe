@@ -95,9 +95,6 @@ flowchart LR
 
 ## To be done
 
-- [ ] unit tests
-- [x] rust complete CI - lint, test, builds, release
-- [x] cross-platform build
 - [ ] install script
 - [ ] documentation update
 
