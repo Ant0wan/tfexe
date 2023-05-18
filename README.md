@@ -96,7 +96,7 @@ flowchart LR
 ## To be done
 
 - [ ] unit tests
-- [ ] rust complete CI - lint, test, builds, release
+- [x] rust complete CI - lint, test, builds, release
 - [ ] cross-platform build
 - [ ] install script similar to tfswitch
 - [ ] documentation update
