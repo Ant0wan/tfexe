@@ -59,6 +59,8 @@ jobs:
             env:
               CC: clang
               RUSTFLAGS: '-D warnings'
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}
     steps:
     - uses: actions/checkout@v3
     - run: rustup target add ${{ matrix.target }}
@@ -72,7 +74,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
-        path: target/${{ matrix.target }}/release/tfexe
+        path: ${{ matrix.target }}/release/tfexe
   test:
     needs: [format, lint, build]
     runs-on: ${{ matrix.os }}

@@ -98,7 +98,7 @@ flowchart LR
 - [ ] unit tests
 - [x] rust complete CI - lint, test, builds, release
 - [x] cross-platform build
-- [ ] install script similar to tfswitch
+- [ ] install script
 - [ ] documentation update
 - [ ] packaging rpm and deb
 
