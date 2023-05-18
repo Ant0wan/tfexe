@@ -74,7 +74,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: tfexe_${{ matrix.target }}
-        path: ${{ matrix.target }}/release/tfexe
+        path: ${{ if eq(matrix.target, 'x86_64-pc-windows-gnu') }}'D:\a\tfexe\tfexe'${{ else }}${{ matrix.target }}/release/tfexe${{ endif }}
   test:
     needs: [format, lint, build]
     runs-on: ${{ matrix.os }}
