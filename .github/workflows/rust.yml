@@ -40,8 +40,12 @@ jobs:
             os: macos-latest
           - target: x86_64-pc-windows-gnu
             os: windows-latest
-          - target: aarch64-unknown-linux-gnu
+          - target: aarch64-unknown-linux-musl
             os: ubuntu-latest
+            env:
+              CC_aarch64_unknown_linux_musl: clang
+              AR_aarch64_unknown_linux_musl: llvm-ar
+              CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_RUSTFLAGS: "-Clink-self-contained=yes -Clinker=rust-lld"
               # - target: aarch64-apple-darwin
               #   os: macos-latest
     steps:
@@ -70,6 +74,10 @@ jobs:
             os: windows-latest
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-latest
+            env:
+              CC_aarch64_unknown_linux_musl: clang
+              AR_aarch64_unknown_linux_musl: llvm-ar
+              CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_RUSTFLAGS: "-Clink-self-contained=yes -Clinker=rust-lld"
               # - target: aarch64-apple-darwin
               #   os: macos-latest
     steps:
