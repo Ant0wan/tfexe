@@ -88,9 +88,24 @@ That's it! You can now use **tfexe** as a drop-in replacement for the classic Te
 ## How it works
 
 ```mermaid
-flowchart LR
-    A(tfexe) -->|read .tf| S(tfswitch)
-    S -->|select version| T(terraform)
+graph TD
+    start(Start)
+    TFEXE_set{TFEXE env variable set?}
+    TFEXE_unset{TFEXE env variable unset?}
+
+    start --> TFEXE_set
+    start --> TFEXE_unset
+
+    TFEXE_set -->|TFEXE value| tfexe_executes[tfexe executes TFEXE]
+    TFEXE_unset -->|'tfswitch' is available| tfswitch_executes[tfexe executes tfswitch]
+    TFEXE_unset -->|'tfswitch' is not available| terraform_executes[tfexe executes terraform]
+
+    tfexe_executes -->|TFEXE set to 'tofu'| tofu_executes[tfexe executes tofu]
+    tfexe_executes -->|TFEXE set to 'terraform'| terraform_executes[tfexe executes terraform]
+    tfexe_executes -->|TFEXE set to 'tfswitch'| tfswitch_executes[tfexe executes tfswitch]
+
+    tfswitch_executes -->|execute appropriate 'terraform' version| terraform_executes[tfexe executes terraform]
+
 ```
 
 ## License
