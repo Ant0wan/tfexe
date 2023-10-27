@@ -29,9 +29,11 @@ jobs:
         project: [project1, project2, project4]
         tfexe: [terraform, tofu, tfswitch]
     steps:
-    - uses: actions/checkout@v3
-    - uses: hashicorp/setup-terraform@v2
-    - uses: opentofu/setup-opentofu@v1
+    - uses: actions/checkout@v4
+    - if: ${{ matrix.tfexe == 'terraform' }}
+      uses: hashicorp/setup-terraform@v2
+    - if: ${{ matrix.tfexe == 'tofu' }}
+      uses: opentofu/setup-opentofu@v1
     - if: ${{ matrix.tfexe == 'tfswitch' }}
       run: curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
     - run: cargo run -- init
